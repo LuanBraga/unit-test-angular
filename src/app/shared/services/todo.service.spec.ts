@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 
 fdescribe('TodoService', () => {
   let service: TodoService;
+  let http: HttpClient;
 
   //With SpyObject
   // let httpClientSpy: jasmine.SpyObj<HttpClient>
@@ -48,9 +49,17 @@ fdescribe('TodoService', () => {
     });
     
     service = TestBed.inject(TodoService);
+    http = TestBed.inject(HttpClient);
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
+  });
+
+  it('should call get method with correct endpoint', () => {
+    const spy = spyOn(http, 'get').and.callThrough();
+
+    service.getTodos();
+    expect(spy).toHaveBeenCalledWith('https://jsonplaceholder.typicode.com/todos/');
   });
 });
