@@ -14,11 +14,7 @@ export class AppComponent implements OnInit, OnDestroy {
   subscriptions$: Subscription[] = [];
   todos: Todo[];
 
-  constructor(private todoService: TodoService) { }
-
-  subscriptions: Subscription[];
-
-  ngOnInit(): void {
+  constructor(private todoService: TodoService) { 
     this.subscriptions$.push(
       this.todoService.getTodos().subscribe({
         next: todos => this.todos = todos,
@@ -27,6 +23,8 @@ export class AppComponent implements OnInit, OnDestroy {
       })
     );
   }
+
+  ngOnInit(): void { }
 
   ngOnDestroy(): void {
     this.subscriptions$.forEach(sub => sub.unsubscribe());
