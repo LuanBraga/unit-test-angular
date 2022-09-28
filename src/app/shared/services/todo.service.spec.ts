@@ -6,7 +6,7 @@ import { TodoService } from './todo.service';
 import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-fdescribe('TodoService', () => {
+describe('TodoService', () => {
   let service: TodoService;
   let http: HttpClient;
 

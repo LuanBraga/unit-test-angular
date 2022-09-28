@@ -9,7 +9,7 @@ import { Todo } from '../shared/models/todo.model';
 export class TodoComponent implements OnInit {
 
   @Input()
-  todo: Todo;
+  todo: Todo = {};
 
   constructor() { }
 
